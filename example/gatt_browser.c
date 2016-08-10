@@ -259,27 +259,8 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
 }
 /* LISTING_END */
 
-static void usage(const char *name){
-	fprintf(stderr, "\nUsage: %s [-a|--address aa:bb:cc:dd:ee:ff]\n", name);
-	fprintf(stderr, "If no argument is provided, GATT browser will start scanning and connect to the first found device.\nTo connect to a specific device use argument [-a].\n\n");
-}
-
 int btstack_main(int argc, const char * argv[]);
 int btstack_main(int argc, const char * argv[]){
-
-    int arg = 1;
-    cmdline_addr_found = 0;
-    
-    while (arg < argc) {
-		if(!strcmp(argv[arg], "-a") || !strcmp(argv[arg], "--address")){
-			arg++;
-			cmdline_addr_found = sscanf_bd_addr(argv[arg], cmdline_addr);
-            arg++;
-            continue;
-        }
-        usage(argv[0]);
-        return 0;
-	}
 
     gatt_client_setup();
 
