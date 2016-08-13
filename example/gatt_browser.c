@@ -178,7 +178,8 @@ static void handle_hci_event(uint8_t packet_type, uint16_t channel, uint8_t *pac
                 break;
             }
             printf("BTstack activated, start scanning!\n");
-            gap_set_scan_parameters(0,0x0030, 0x0030);
+            //gap_set_scan_parameters(0,0x0030, 0x0030);
+            gap_set_scan_parameters(1,0x0500, 0x0500); //set same params as in il_hci_old.c
             gap_start_scan();
             break;
         case GAP_EVENT_ADVERTISING_REPORT:
