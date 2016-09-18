@@ -81,7 +81,9 @@ const uint8_t adv_data[] = {
     // Flags general discoverable
     0x02, 0x01, 0x06, 
     // Name
-    0x0b, 0x09, 'L', 'E', ' ', 'C', 'o', 'u', 'n', 't', 'e', 'r', 
+    //0x0b, 0x09, 'L', 'E', ' ', 'C', 'o', 'u', 'n', 't', 'e', 'r', 
+    0x09, 0x09, 0xD, 0xE, 0xA, 0xD, 0xB, 0xE, 0xE, 0xF,
+
 };
 const uint8_t adv_data_len = sizeof(adv_data);
 
@@ -106,7 +108,7 @@ static void le_counter_setup(void){
     // setup advertisements
     uint16_t adv_int_min = 0x0030;
     uint16_t adv_int_max = 0x0030;
-    uint8_t adv_type = 0;
+    uint8_t adv_type = 0; //scannable ind based on crs
     bd_addr_t null_addr;
     memset(null_addr, 0, 6);
     gap_advertisements_set_params(adv_int_min, adv_int_max, adv_type, 0, null_addr, 0x07, 0x00);
